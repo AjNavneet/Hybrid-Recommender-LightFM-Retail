@@ -53,7 +53,7 @@ Our goal is to build a Hybrid Recommendation system using different loss functio
    The `ML_pipeline` folder contains functions organized in different Python files, which are called from the `engine.py` file. There's also a `config.ini` file in the input folder, storing variables used in `engine.py`.
 
 3. **output**: Contains our final models saved in pickle format.
-4. **lib**: This is a reference folder that includes the original IPython notebook and the PowerPoint presentation used during the explanation.
+4. **lib**: This is a reference folder that includes the original IPython notebook and reference pdfs for explanation.
 5. **requirements.txt**: Lists all the required libraries with their respective versions. Install these libraries using the command `pip install -r requirements.txt`.
 6. Instructions for running the code are in the `readme.md` file.
 
