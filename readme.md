@@ -1,6 +1,5 @@
 # Hybrid Recommender System using LightFM
 
-
 ### Business Objective
 
 There are two main methods for making these suggestions: content-based and collaborative filtering. Collaborative filtering finds similarities between users to make recommendations, while content-based filtering personalizes content for each user based on their previous actions and feedback. 
@@ -56,22 +55,6 @@ Our goal is to build a Hybrid Recommendation system using different loss functio
 4. **lib**: This is a reference folder that includes the original IPython notebook and reference pdfs for explanation.
 5. **requirements.txt**: Lists all the required libraries with their respective versions. Install these libraries using the command `pip install -r requirements.txt`.
 6. Instructions for running the code are in the `readme.md` file.
-
----
-
-## Key Concepts Explored
-
-1. Representations
-2. Hybrid Recommender System
-4. Evaluation metrics used for recommender system
-5. Framework of LightFM
-6. Bayesian Personalized Ranking (BPR) loss
-7. Weighted Approximate Pairwise (WARP) loss
-8. Prepare data suitable for LightFM?
-9. Hybrid recommendation model with different loss functions
-10. Recommendation system using the LightFM library?
-11. Recommendations based on the final model
-
 
 ---
 
