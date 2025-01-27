@@ -1,94 +1,212 @@
 # Hybrid Recommender System using LightFM
 
-### Business Objective
+## Business Objective
 
-There are two main methods for making these suggestions: content-based and collaborative filtering. Collaborative filtering finds similarities between users to make recommendations, while content-based filtering personalizes content for each user based on their previous actions and feedback. 
+Recommendation systems are critical for improving user engagement by suggesting relevant products or services. Two popular approaches include:
 
-However, these methods struggle when there's not enough data. To address this, we'll explore a Hybrid Recommendation System, which combines both approaches.
+- **Collaborative Filtering**: Identifies similarities between users to recommend items.
+- **Content-Based Filtering**: Personalizes recommendations for users based on their past actions and preferences.
 
----
-
-### Data Description
-
-The dataset used in this project contains transactional data for a UK-based online retail company that sells unique gifts for various occasions.
+However, these methods face challenges with sparse or insufficient data. To address these limitations, we develop a **Hybrid Recommendation System** that combines both approaches, leveraging the **LightFM** library.
 
 ---
 
-### Aim
+## Data Description
 
-Our goal is to build a Hybrid Recommendation system using different loss functions with the LightFM library.
+The dataset contains transactional data from a UK-based online retail company specializing in unique gifts for various occasions. Key features include:
+
+- **User IDs**: Identifiers for customers.
+- **Item IDs**: Identifiers for products.
+- **Transactions**: User-item interactions.
+- **Ratings/Feedback**: Implicit or explicit feedback data.
 
 ---
 
-### Tech Stack
+## Aim
 
-- Language: `Python`
-- Libraries: `pandas`, `numpy`, `scipy`, `lightfm`
+To build a Hybrid Recommendation System using different loss functions provided by the **LightFM** library, including:
+
+- **WARP (Weighted Approximate-Rank Pairwise)**
+- **Logistic Loss**
+- **BPR (Bayesian Personalized Ranking)**
+
+---
+
+## Tech Stack
+
+- **Programming Language**: [Python](https://www.python.org/)
+- **Libraries**:
+  - [`pandas`](https://pandas.pydata.org/) for data manipulation.
+  - [`numpy`](https://numpy.org/) for numerical operations.
+  - [`scipy`](https://scipy.org/) for scientific computing.
+  - [`lightfm`](https://making.lyst.com/lightfm/) for building hybrid recommendation systems.
 
 ---
 
 ## Approach
 
-1. **Import required libraries**
-2. **Read and merge the data**
-3. **Prepare the data**
-4. **Split the data into training and testing sets**
-5. **Build models**
-   - Model with WARP loss function
-   - Model with logistic loss function
-   - Model with BPR loss function
-6. **Combine data for the final model**
-7. **Generate recommendations**
+### 1. Import Required Libraries
+- Load essential Python libraries for data manipulation and model building.
+
+### 2. Read and Merge Data
+- Import the dataset and combine user and item features into a single dataset for analysis.
+
+### 3. Prepare Data
+- Clean and preprocess the data for input into the LightFM model.
+
+### 4. Split Data
+- Divide the dataset into training and testing sets to evaluate model performance.
+
+### 5. Build Models
+- Train LightFM models using:
+  - **WARP Loss Function**: Optimized for ranking.
+  - **Logistic Loss Function**: Suitable for predicting probabilities.
+  - **BPR Loss Function**: Designed for implicit feedback data.
+
+### 6. Combine Data
+- Integrate content-based and collaborative filtering data to train the hybrid model.
+
+### 7. Generate Recommendations
+- Use the trained hybrid model to recommend items for users based on their interactions and preferences.
 
 ---
 
-## Modular Code
+## Project Structure
 
-1. **input**: Contains the data we'll use for analysis, such as `data.xlsx`.
-2. **src**: This folder holds all the code for our project, organized in a modular manner. It includes:
-   - **ML_pipeline**
-   - **engine.py**
-
-   The `ML_pipeline` folder contains functions organized in different Python files, which are called from the `engine.py` file. There's also a `config.ini` file in the input folder, storing variables used in `engine.py`.
-
-3. **output**: Contains our final models saved in pickle format.
-4. **lib**: This is a reference folder that includes the original IPython notebook and reference pdfs for explanation.
-5. **requirements.txt**: Lists all the required libraries with their respective versions. Install these libraries using the command `pip install -r requirements.txt`.
-6. Instructions for running the code are in the `readme.md` file.
+```plaintext
+.
+├── input/                                # Contains input data files (e.g., `data.xlsx`).
+├── src/                                  # Source code folder.
+│   ├── engine.py                         # Main script to execute the pipeline.
+│   ├── ML_pipeline/                      # Modular Python functions for preprocessing and modeling.
+│       ├── data_preparation.py           # Functions for data preprocessing.
+│       ├── model_training.py             # Functions for training LightFM models.
+│       ├── recommendation.py             # Functions to generate recommendations.
+├── output/                               # Stores saved models and results.
+├── lib/                                  # Reference materials and Jupyter notebooks.
+├── requirements.txt                      # Lists dependencies and versions.
+└── README.md                             # Project documentation.
+```
 
 ---
 
 ## Getting Started
 
-### Install all the requirements
+### 1. Clone the Repository
 
-- pip install -r requirements.txt
+```bash
+git clone <repository_url>
+cd <repository_folder>
+```
 
-#### Run the engine.py file to execute the code
+### 2. Install Dependencies
+
+Install all required Python libraries using:
+
+```bash
+pip install -r requirements.txt
+```
+
+### 3. Run the Project
+
+Execute the pipeline by running the `engine.py` file:
+
+```bash
+python src/engine.py
+```
+
+### 4. Explore Results
+
+- Check the `output/` folder for saved models and generated recommendations.
+- Review reference notebooks in the `lib/` folder for detailed explanations.
+
+---
+
+## Troubleshooting
+
+If you encounter issues installing the `lightfm` package, try the following steps:
+
+### Method 1: Upgrade Essential Tools
+
+Run the following commands in your terminal:
+
+```bash
+python -m pip install --upgrade pip
+pip install --upgrade wheel
+pip install --upgrade setuptools
+```
+
+Close the terminal and retry installing `lightfm`.
+
+### Method 2: Install Microsoft Visual C++ Build Tools
+
+Download and install the required tools from:
+[Microsoft Visual C++ Build Tools](https://visualstudio.microsoft.com/visual-cpp-build-tools/)
+
+Retry installing `lightfm` after the installation.
 
 ---
 
+## Results
 
-### Note
-
-In case you face issues while installing the  'lightfm' package; Try the following two methods:
-
-1. In your VS code, perform the following executions on your terminal window
-
-	- Upgrade your pip with: python -m pip install --upgrade pip
-
-	- Upgrade your wheel with: pip install --upgrade wheel
-
-	- Upgrade your setuptools with: pip install --upgrade setuptools
-
-	- close the terminal
-
-	- Try installing the pacakage again.
-
-
-2. In case you face; error: Microsoft Visual C++
-Download and install  
-	- https://visualstudio.microsoft.com/visual-cpp-build-tools/
+- **Hybrid Model Performance**:
+  - Combined the strengths of collaborative and content-based filtering.
+  - Achieved personalized and accurate recommendations.
+- **Generated Recommendations**:
+  - Delivered tailored item suggestions based on user preferences and item features.
 
 ---
+
+## Contributing
+
+Contributions are welcome! To contribute:
+
+1. Fork the repository.
+2. Create a feature branch:
+
+```bash
+git checkout -b feature-name
+```
+
+3. Commit your changes:
+
+```bash
+git commit -m "Add feature"
+```
+
+4. Push your branch:
+
+```bash
+git push origin feature-name
+```
+
+5. Open a pull request.
+
+---
+
+## License
+
+This project is licensed under the MIT License. See the `LICENSE` file for details.
+
+---
+
+## Contact
+
+For any questions or suggestions, please reach out to:
+
+- **Name**: Abhinav Navneet
+- **Email**: mailme.AbhinavN@gmail.com
+- **GitHub**: [AjNavneet](https://github.com/AjNavneet)
+
+---
+
+## Acknowledgments
+
+Special thanks to:
+
+- [LightFM](https://making.lyst.com/lightfm/) for providing a robust library for hybrid recommendations.
+- The Python open-source community for excellent tools and resources.
+
+---
+
 
